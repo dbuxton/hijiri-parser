@@ -21,13 +21,20 @@ persian_months = {
 
 def parse(datestring):
   """
+  Parse a short string as a hijiri date. We have no guarantees on whether there
+  will be redundant information in there (extra punctuation etc) but we should
+  cover the most obvious cases first.
+
+  See http://en.wikipedia.org/wiki/Solar_Hijri_calendar for a description of the
+  Hijiri solar calendar.
+
+  This does not yet handle the Hijiri lunar calendar.
+
   Args:
     `datestring`: string that we think represents a valid date
   Returns:
     3-tuple of date in valid hijiri format `(year, month, day)`
     where year, month and day are all integers.
-    See http://en.wikipedia.org/wiki/Solar_Hijri_calendar for a
-    description of the calendar.
   """
   raise NotImplementedError()
 
@@ -37,9 +44,8 @@ def convert_to_gregorian(datetuple, calendar='solar'):
   Gregorian format.
   Args:
     `datetuple` - 3-tuple hijiri date
-    `calendar` - `solar` or `lunar` depending on whether we are
-    using the Persian solar or Arab (?) lunar calendar to calculate
-    date
+    `calendar` - `solar` or `lunar` depending on whether we are using the Persian solar
+    or Arab (?) lunar calendar to calculate date
   Returns:
     3-tuple of date in Gregorian format
   """
